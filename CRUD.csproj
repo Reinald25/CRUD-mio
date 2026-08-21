@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="C:\Users\Usuario\Downloads\alumnosContext.cs" Link="alumnosContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\Usuario\OneDrive\Desktop\.Net\CRUD\.editorconfig" />
+    <None Include="efpt.config.json.user" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\Usuario\OneDrive\Desktop\.Net\CRUD\.editorconfig" />
+  </ItemGroup>
+
+</Project>
