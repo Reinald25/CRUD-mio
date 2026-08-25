@@ -6,9 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="C:\Users\Usuario\Downloads\alumnosContext.cs" Link="alumnosContext.cs" />
-  </ItemGroup>
+  <!-- Removed external Compile reference to user's Downloads folder which caused CS2001 -->
 
   <ItemGroup>
     <None Include="C:\Users\Usuario\OneDrive\Desktop\.Net\CRUD\.editorconfig" />
@@ -18,6 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

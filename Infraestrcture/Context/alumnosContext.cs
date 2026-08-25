@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using CRUD.Entidades;
 
 namespace CRUD.Infraestrcture.Context;
 
@@ -13,35 +14,33 @@ public partial class alumnosContext : DbContext
     {
     }
 
-    public virtual DbSet<Alumnos> Alumnos { get; set; }
+    public virtual DbSet<Persona> Persona { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .UseCollation("utf8mb4_general_ci")
+            .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Alumnos>(entity =>
+        modelBuilder.Entity<Persona>(entity =>
         {
-            entity.HasKey(e => e.Idalumnos).HasName("PRIMARY");
+            entity.HasKey(e => e.IdPersona).HasName("PRIMARY");
 
-            entity.ToTable("alumnos");
+            entity.ToTable("persona");
 
-            entity.Property(e => e.Idalumnos)
-                .HasColumnType("int(11)")
-                .HasColumnName("idalumnos");
-            entity.Property(e => e.Apellidos)
-                .HasMaxLength(45)
-                .HasColumnName("apellidos");
-            entity.Property(e => e.Edad)
-                .HasMaxLength(45)
-                .HasColumnName("edad");
-            entity.Property(e => e.Fecha)
-                .HasMaxLength(45)
-                .HasColumnName("fecha");
+            entity.Property(e => e.IdPersona).HasColumnName("id_persona");
             entity.Property(e => e.Nombres)
-                .HasMaxLength(45)
+                .HasMaxLength(100)
                 .HasColumnName("nombres");
+            entity.Property(e => e.Apellido)
+                .HasMaxLength(100)
+                .HasColumnName("apellido");
+            entity.Property(e => e.Edad)
+                .HasColumnType("int")
+                .HasColumnName("edad");
+            entity.Property(e => e.Estado)
+                .HasMaxLength(50)
+                .HasColumnName("estado");
         });
 
         OnModelCreatingPartial(modelBuilder);

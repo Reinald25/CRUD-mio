@@ -1,6 +1,5 @@
 ﻿using CRUD.Infraestrcture.Context;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Cryptography.X509Certificates;
+using CRUD.Entidades;
 
 namespace CRUD.Repositorio.Alumno
 {
@@ -11,38 +10,44 @@ namespace CRUD.Repositorio.Alumno
         public AlumnoCommand(alumnosContext context)
         {
             _context = context;
-
         }
 
-        public async Task<Persona> CreatePersonasAsync(PersonalDataAttribute dto)
+        public async Task<Persona> CreatePersonasAsync(Persona dto)
         {
-            var Persona = new PersonalDataAttribute();
-            return Persona;
+            var entity = new Persona
+            {
+                Nombres = dto.Nombres,
+                Apellido = dto.Apellido,
+                Edad = dto.Edad,
+                Estado = dto.Estado
+            };
+
+            _context.Persona.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task<Persona> UpdatePersonasAsync(Persona dto)
         {
-            var entity = await _context.Persona.FindAsync(StoreOptions.Idpersona)
-                ?? throw new InvalidOperationException($"persona{dto.Idpersona} no encontrada");
+            var entity = await _context.Persona.FindAsync(dto.IdPersona)
+                ?? throw new InvalidOperationException($"Persona {dto.IdPersona} no encontrada");
+
             entity.Nombres = dto.Nombres;
-            entity.Apellidos = dto.Apellidos;
-            entity.Cedula = dto.Cedula;
+            entity.Apellido = dto.Apellido;
+            entity.Edad = dto.Edad;
+            entity.Estado = dto.Estado;
 
             await _context.SaveChangesAsync();
-            return new Persona
-            {
-                Idpersona = entity.Idpersona,
-                Apellidos = entity.Apellidos,
-                Nombres = entity.Nombres,
-                Cedula = entity.Cedula,
-                Activo = entity.Activo,
-
-            };
-            public async Task<bool> DeletePersonaAsync(int id)
-        {
-            var entity = await _context.Person.FindAsync(id);
-
+            return entity;
         }
+
+        public async Task<bool> DeletePersonaAsync(int id)
+        {
+            var entity = await _context.Persona.FindAsync(id);
+            if (entity == null) return false;
+            _context.Persona.Remove(entity);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }
