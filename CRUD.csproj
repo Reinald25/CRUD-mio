@@ -23,4 +23,8 @@
     <EditorConfigFiles Remove="C:\Users\Usuario\OneDrive\Desktop\.Net\CRUD\.editorconfig" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositorio\Alumno\" />
+  </ItemGroup>
+
 </Project>

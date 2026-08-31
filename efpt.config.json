@@ -1,6 +1,6 @@
 ﻿{
    "CodeGenerationMode": 4,
-   "ContextClassName": "alumnosContext",
+   "ContextClassName": "rpgContext",
    "ContextNamespace": null,
    "FilterSchemas": false,
    "IncludeConnectionString": false,
@@ -19,7 +19,7 @@
    "T4TemplatePath": null,
    "Tables": [
       {
-         "Name": "persona",
+         "Name": "rankings",
          "ObjectType": 0
       }
    ],

@@ -41,14 +41,14 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
-                       "server=localhost;user=root;password=Diabellstar10;database=alumnos";
+                       "server=localhost;user=root;password=Diabellstar10;database=rpg_journey";
 
-builder.Services.AddDbContext<alumnosContext>(options =>
+builder.Services.AddDbContext<rpgContext>(options =>
     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 29))));
 
 // Register repositories/commands
-builder.Services.AddScoped<CRUD.Repositorio.Alumno.AlumnoQuery>();
-builder.Services.AddScoped<CRUD.Repositorio.Alumno.AlumnoCommand>();
+builder.Services.AddScoped<CRUD.Repositorio.Rpg.RpgQuery>();
+builder.Services.AddScoped<CRUD.Repositorio.Rpg.RpgCommand>();
 
 // Authentication - JWT Bearer
 var jwtKey = builder.Configuration["Jwt:Key"] ?? "CHANGE_ME_LONG_SECRET_KEY_12345";
